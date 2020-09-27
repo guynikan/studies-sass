@@ -1,0 +1,58 @@
+@import "colors";
+
+$fonte-primaria: monospace;
+$cor-primaria: #343434;
+$cor-secundaria: #df4c4c;
+
+@mixin title-large {
+    font-size: 4em;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@mixin separador($color) {
+    &::after {
+        display: block;
+        content: '';
+        width: 100px;
+        height: 4px;
+        background: $color;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 600px){
+        @content;
+    }
+}
+
+div {
+    background: $cor-primaria;
+    @include mobile {
+        background: $cor-secundaria;
+    }
+    height: 200px;
+    width: 100px;
+    // nesting
+    a {
+        @include title-large;
+        display: inline-block;
+        text-align: center;
+        padding-top: 15px;
+        width: auto;
+        height: auto;
+        font-family: $fonte-primaria;
+        color: pink;
+        background: $cor-primaria;
+        // quando precisar estilizar elementos 'grudados' no seletor acima
+        &:hover {
+            background: $cor-secundaria;
+        }
+    }
+
+    h1 {
+        @include separador(aqua);
+    }
+}
+

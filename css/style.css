@@ -1,0 +1,40 @@
+p {
+  color: aqua;
+}
+
+div {
+  background: #343434;
+  height: 200px;
+  width: 100px;
+}
+@media (max-width: 600px) {
+  div {
+    background: #df4c4c;
+  }
+}
+div a {
+  font-size: 4em;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding-top: 15px;
+  width: auto;
+  height: auto;
+  font-family: monospace;
+  color: pink;
+  background: #343434;
+}
+div a:hover {
+  background: #df4c4c;
+}
+div h1::after {
+  display: block;
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: aqua;
+}
+
+/*# sourceMappingURL=style.css.map */
