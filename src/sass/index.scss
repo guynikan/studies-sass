@@ -1,0 +1,87 @@
+@import "colors";
+@import 'loop';
+
+$fonte-primaria: monospace;
+$cor-primaria: #343434;
+$cor-secundaria: #df4c4c;
+
+@mixin title-large {
+    font-size: 4em;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@mixin type-1 ($size) {
+    // Condicionais
+    // são úteis pra sombras (material design)
+    // tipografia
+    // e responsivo (condicionais para tablet, mobile..)
+    @if $size == normal {
+        font-size: 14px;
+    }
+    
+    @else if $size == large {
+        font-size: 40px;
+    }
+}
+
+// exemplo de condicional com mixin e content aplicando media query
+@mixin device($format){
+    @if $format == tablet {
+        @media (max-width: 600px){
+            @content;
+        }
+    }
+}
+//...
+
+@mixin separador($color) {
+    &::after {
+        display: block;
+        content: '';
+        width: 100px;
+        height: 4px;
+        background: $color;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 600px){
+        @content;
+    }
+}
+
+div {
+    background: $cor-primaria;
+    @include mobile {
+        background: $cor-secundaria;
+    }
+    // posso usar também operadores pra definir um tamanho
+    height: 200px - 50;
+    width: 100px;
+    // nesting
+    a {
+        @include title-large;
+        display: inline-block;
+        text-align: center;
+        padding-top: 15px;
+        width: auto;
+        height: auto;
+        font-family: $fonte-primaria;
+        color: pink;
+        // cria transparência
+        background: transparentize($cor-secundaria, .5);
+        // quando precisar estilizar elementos 'grudados' no seletor acima
+        &:hover {
+            // funções lighten e darken
+            background: darken($cor-secundaria, 10%);
+        }
+    }
+
+    h1 {
+        @include type-1(large);
+        @include separador(aqua);
+    }
+}
+

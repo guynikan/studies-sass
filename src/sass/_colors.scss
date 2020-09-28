@@ -1,0 +1,8 @@
+// arquivos com _ na frente são interpretados pelo compilador do sass como partials
+// isso significa que na area dele transpilar, ele não vai gerar um arquivo equivalente.
+// e caso tenha um @import '_nomedoarquivo' no arquivo principal (que n seja uma partial)
+// ele irá importar a partial pro arquivo final.
+
+p {
+    color: aqua;
+}

@@ -1,0 +1,29 @@
+@for $i from 1 through 6 {
+// a syntax #{} serve pa    ra capturar o valor real de uma var para usar fora de valores
+// de propriedades
+    .item-#{$i} {
+        width: 100px * $i;
+    }
+}
+
+$container: 960;
+$colunas: 12;
+$gutter: 20;
+
+@for $i from 1 through $colunas {
+    $width: $container / $colunas * $i - $gutter;
+
+    .grid-#{$i} {
+        width: $width + px;
+    }
+}
+
+// each
+
+$lista: 10 20 30 40;
+
+@each $item in $lista {
+    .t-#{$item}-icon {
+        width: $item + px;
+    }
+}
